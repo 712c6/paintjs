@@ -10,7 +10,7 @@ const INITIAL_COLOLR = "#2c2c2c";
 canvas.width = document.getElementsByClassName("canvas")[0].offsetWidth;
 canvas.height = document.getElementsByClassName("canvas")[0].offsetHeight;
 
-//로드 시 실제 캔버스의 배경색 초기화
+//canvas initializing
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 ctx.strokeStyle = INITIAL_COLOLR;
@@ -75,7 +75,7 @@ function handleSaveClick() {
     const image = canvas.toDataURL("image/png");
     const link = document.createElement("a");
     link.href = image;
-    link.download = "PaingJS[EXPORT]🎨";
+    link.download = "PaingJS[🎨]";
     link.click();
 }
 
@@ -94,7 +94,10 @@ if(range) {
     range.addEventListener("input", handleRangeChange);
 }
 
-//button태그들에 대해 addEventListener가 제대로 동작을 안 함??
+//addEventListener click is not working?
+//->얘는 동작하고 있음. mode.click()하면 정상 동작
+//그러면 클릭 자체를 인식을 못한다는 건데 말이 됨??
+//->css 문제였음... scale(0.98)을 scale(0,98)로 줘서.............
 if(mode) {
     mode.addEventListener("click", handleModeClick);
 }
